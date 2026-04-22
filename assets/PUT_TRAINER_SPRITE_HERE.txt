@@ -1,0 +1,12 @@
+Si quieres un entrenador “oficial”/idéntico al juego:
+
+1) Exporta/consigue un sprite-sheet (PNG) que tengas permiso de usar.
+2) Guárdalo como `assets/trainer.png`.
+
+Formato esperado por defecto:
+- 4 filas: down, left, right, up
+- 4 columnas: frames de caminata
+- El código infiere el tamaño de frame a partir del tamaño total.
+
+Si tu sprite-sheet usa otro orden o tamaño, dímelo y lo adapto.
+

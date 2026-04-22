@@ -1,0 +1,12 @@
+Coloca aquí tus audios.
+
+## Música de ruta (tranquila)
+
+- `route.mp3` (o `route.ogg`)
+
+## Música de victoria/final
+
+- `victory.mp3` (o `victory.ogg`)
+
+Nota: no se incluye música oficial de Pokémon por derechos de autor.
+

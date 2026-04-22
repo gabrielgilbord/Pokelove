@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#2e7d32" />
+    <title>Pokélove — Ruta de Recuerdos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game" id="game" aria-live="polite">
+      <section class="screen screen--active" id="screen-title" aria-label="Pantalla inicial">
+        <div class="title">
+          <div class="title__logo">RUTA DE RECUERDOS</div>
+          <div class="title__subtitle">Edición 5º Aniversario</div>
+
+          <div class="textbox textbox--center">
+            <div class="textbox__text">¡Un recuerdo salvaje ha aparecido!</div>
+            <div class="avatar-customizer" aria-label="Personalizador de avatar">
+              <div class="avatar-customizer__title">Nuestra entrenadora favorita: Tatiana ❤️</div>
+              <div class="tryon">
+                <div class="tryon__frame" aria-label="Vista previa del avatar">
+                  <canvas id="previewCanvas" class="tryon__canvas" width="240" height="240"></canvas>
+                  <div class="tryon__badge">PROBADOR VIRTUAL</div>
+                  <div class="tryon__debug" id="previewDebug" aria-hidden="true" style="display:none"></div>
+                </div>
+              </div>
+            </div>
+            <div class="textbox__actions">
+              <button class="ui-btn" id="btnSound" type="button" aria-pressed="false">Sonido: OFF</button>
+              <button class="ui-btn" id="btnMusic" type="button" aria-pressed="false">Música: OFF</button>
+            </div>
+            <div class="textbox__actions textbox__actions--start">
+              <button class="ui-btn ui-btn--primary ui-btn--start" id="btnStart" type="button">
+                ¡Investigar!
+              </button>
+            </div>
+            <div class="textbox__hint">
+              Móvil: usa el D-pad (abajo izq.) y el botón A (abajo der.) o toca el mapa para caminar.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-route" aria-label="Ruta (overworld)">
+        <div class="route">
+          <canvas id="routeCanvas" class="route__canvas" width="360" height="640"></canvas>
+
+          <div class="hud" aria-label="HUD">
+            <div class="hud__pill" id="hudProgress">Recuerdos: 0/5</div>
+            <button class="hud__btn" id="btnPause" type="button">Menú</button>
+          </div>
+
+          <div class="controls" aria-label="Controles táctiles">
+            <div class="dpad" id="dpad" aria-label="D-pad">
+              <button class="dpad__btn dpad__btn--up" data-dir="up" type="button">▲</button>
+              <button class="dpad__btn dpad__btn--left" data-dir="left" type="button">◀</button>
+              <button class="dpad__btn dpad__btn--right" data-dir="right" type="button">▶</button>
+              <button class="dpad__btn dpad__btn--down" data-dir="down" type="button">▼</button>
+            </div>
+
+            <div class="ab" aria-label="Botones">
+              <button class="ab__btn ab__btn--a" id="btnA" type="button">A</button>
+            </div>
+          </div>
+
+          <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-event" aria-label="Evento">
+        <div class="event">
+          <div class="event__top">
+            <div class="battle">
+              <div class="battle__header">
+                <div class="battle__name" id="eventLabel">RECUERDO AÑO 1</div>
+                <div class="battle__tag">EVENTO</div>
+              </div>
+
+              <div class="battle__frame" aria-label="Marco de recuerdo">
+                <div class="battle__frameInner">
+                  <img class="battle__img" id="eventImg" alt="Foto del recuerdo" />
+                  <div class="battle__scanlines" aria-hidden="true"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="poke-dialog" aria-label="Diálogo">
+            <div class="poke-dialog__text" id="eventText"></div>
+            <div class="poke-dialog__row">
+              <button class="a-btn" id="btnRegister" type="button">
+                <span class="a-btn__cap">A</span>
+                <span class="a-btn__label">Registrar Momento</span>
+              </button>
+              <button class="ui-btn ui-btn--mini" id="btnSkip" type="button">Saltar</button>
+            </div>
+            <div class="poke-dialog__next" id="nextArrow" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-finale" aria-label="Final">
+        <div class="finale">
+          <canvas id="confettiCanvas" class="finale__confetti" width="360" height="640"></canvas>
+          <div class="finale__card">
+            <div class="finale__title">¡FELICIDADES!</div>
+            <div class="finale__hero" aria-label="Tatiana y su regalo">
+              <canvas id="finaleAvatarCanvas" class="finale__avatar" width="320" height="220"></canvas>
+              <div class="finale__heroText">¡Tatiana recogió su regalo! Mira en la guantera para abrir tu Objeto Legendario.</div>
+            </div>
+            <div class="textbox">
+              <div class="textbox__text">¡Has completado la Ruta del Lustro!<br />Ahora toca recoger tu recompensa en el mundo real.</div>
+              <div class="textbox__actions">
+                <button class="ui-btn ui-btn--primary" id="btnBackToRoute" type="button">
+                  Volver a la Ruta
+                </button>
+                <button class="ui-btn" id="btnReset" type="button">Reiniciar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="transition" id="transition" aria-hidden="true"></div>
+
+      <div class="menu" id="menu" aria-hidden="true">
+        <div class="menu__panel" role="dialog" aria-label="Menú">
+          <div class="menu__title">MENÚ</div>
+          <div class="menu__actions">
+            <button class="ui-btn ui-btn--primary" id="btnResume" type="button">Continuar</button>
+            <button class="ui-btn" id="btnToggleSound2" type="button" aria-pressed="false">Sonido: OFF</button>
+            <button class="ui-btn" id="btnToggleMusic2" type="button" aria-pressed="false">Música: OFF</button>
+            <button class="ui-btn" id="btnReset2" type="button">Reiniciar progreso</button>
+          </div>
+          <div class="menu__hint">
+            Objetivo: recoge 5 objetos brillantes en orden. Pulsa A cerca de ellos.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <audio id="routeBgm" preload="none" loop></audio>
+    <audio id="victoryBgm" preload="none" loop></audio>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
