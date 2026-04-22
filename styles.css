@@ -37,8 +37,21 @@ body{
   background:#0b1020;
   color:#fff;
   -webkit-tap-highlight-color:transparent;
+  -webkit-touch-callout:none; /* iOS: evita menú de copiar al mantener pulsado */
+  -webkit-user-select:none;
+  user-select:none;
   overscroll-behavior:none;
   touch-action:manipulation;
+}
+
+/* Evita selección/arrastre en la UI del juego (móvil) */
+.game,
+.screen,
+canvas,
+button{
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout:none;
 }
 
 .screen{display:none; width:100%;}

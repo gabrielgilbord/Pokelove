@@ -2212,6 +2212,15 @@ async function init() {
   ui.routeCanvas.addEventListener("pointerdown", onCanvasTap);
   ui.routeCanvas.addEventListener("touchstart", onCanvasTap, { passive: true });
 
+  // Evita “seleccionar texto / menú copiar” al mantener pulsado en móvil
+  const blockLongPress = (e) => {
+    // solo dentro del juego
+    if (!e.target?.closest?.("#game")) return;
+    e.preventDefault();
+  };
+  document.addEventListener("contextmenu", blockLongPress, { capture: true });
+  document.addEventListener("selectstart", blockLongPress, { capture: true });
+
   // D-pad supports hold
   const bindHold = (btn) => {
     const dir = btn.dataset.dir;
