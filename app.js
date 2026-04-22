@@ -3,38 +3,33 @@ const STORAGE_KEY = "pokelove_route_progress_v2";
 const memories = [
   {
     year: 1,
-    label: "RECUERDO AÑO 1",
-    photoUrl: "Pon aquí la URL de tu foto",
-    text:
-      "Nuestro primer año: el inicio de la aventura. Ese momento en el que todo se sintió nuevo, sencillo y perfecto.",
+    label: "Año 1 (La Moto)",
+    photoUrl: "./assets/IMG_1.PNG",
+    text: "5 años de aventuras y tú sigues siendo mi mejor viaje.",
   },
   {
     year: 2,
-    label: "RECUERDO AÑO 2",
-    photoUrl: "Pon aquí la URL de tu foto",
-    text:
-      "Segundo año: aprendimos a elegirnos incluso en días difíciles. Y aun así, seguimos sumando alegría.",
+    label: "Año 2 (Mascarillas)",
+    photoUrl: "./assets/IMG_2.PNG",
+    text: "Superando cualquier obstáculo juntos, un beso (o dos) a la vez.",
   },
   {
     year: 3,
-    label: "RECUERDO AÑO 3",
-    photoUrl: "Pon aquí la URL de tu foto",
-    text:
-      "Tercer año: más equipo, más casa, más historia. De esos recuerdos que se sienten como checkpoint guardado.",
+    label: "Año 3 (Abrigo Gris)",
+    photoUrl: "./assets/IMG_3.PNG",
+    text: "Tres años reflejando nuestro amor en cada paso que damos.",
   },
   {
     year: 4,
-    label: "RECUERDO AÑO 4",
-    photoUrl: "Pon aquí la URL de tu foto",
-    text:
-      "Cuarto año: seguimos evolucionando. Me encanta cómo celebramos lo simple y nos cuidamos en lo grande.",
+    label: "Año 4 (Ascensor)",
+    photoUrl: "./assets/IMG_4.PNG",
+    text: "Nuestro amor sigue subiendo, nivel a nivel, cumpliendo retos y sueños juntos.",
   },
   {
     year: 5,
-    label: "RECUERDO AÑO 5",
-    photoUrl: "Pon aquí la URL de tu foto",
-    text:
-      "Quinto año: cinco capítulos de nosotros. Y lo mejor es que esta historia aún está empezando.",
+    label: "Año 5 (Japón - Bolas Verdes)",
+    photoUrl: "./assets/IMG_5.jpg",
+    text: "Nuestra aventura épica en Japón: un sueño cumplido juntos.",
   },
 ];
 
