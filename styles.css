@@ -603,6 +603,8 @@ button{
   border-radius:999px;
   display:grid;
   place-items:center;
+  font-family:var(--font);
+  font-size:14px;
   background:
     radial-gradient(circle at 30% 25%, rgba(255,255,255,.65) 0%, rgba(255,255,255,0) 45%),
     linear-gradient(180deg, #ffd44a 0%, #c79a14 100%);

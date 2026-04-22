@@ -3,31 +3,31 @@ const STORAGE_KEY = "pokelove_route_progress_v2";
 const memories = [
   {
     year: 1,
-    label: "Año 1 (La Moto)",
+    label: "Año 1",
     photoUrl: "./assets/IMG_1.PNG",
     text: "5 años de aventuras y tú sigues siendo mi mejor viaje.",
   },
   {
     year: 2,
-    label: "Año 2 (Mascarillas)",
+    label: "Año 2",
     photoUrl: "./assets/IMG_2.PNG",
     text: "Superando cualquier obstáculo juntos, un beso (o dos) a la vez.",
   },
   {
     year: 3,
-    label: "Año 3 (Abrigo Gris)",
+    label: "Año 3",
     photoUrl: "./assets/IMG_3.PNG",
     text: "Tres años reflejando nuestro amor en cada paso que damos.",
   },
   {
     year: 4,
-    label: "Año 4 (Ascensor)",
+    label: "Año 4",
     photoUrl: "./assets/IMG_4.PNG",
     text: "Nuestro amor sigue subiendo, nivel a nivel, cumpliendo retos y sueños juntos.",
   },
   {
     year: 5,
-    label: "Año 5 (Japón - Bolas Verdes)",
+    label: "Año 5",
     photoUrl: "./assets/IMG_5.jpg",
     text: "Nuestra aventura épica en Japón: un sueño cumplido juntos.",
   },
@@ -66,6 +66,27 @@ function loadImage(url) {
     img.onload = () => resolve(img);
     img.onerror = () => reject(new Error(`No se pudo cargar: ${url}`));
     img.src = url;
+  });
+}
+
+// Pre-carga imágenes para que abran instant al entrar al recuerdo
+const preloadedImages = new Map();
+function preloadImage(url) {
+  if (!url) return Promise.resolve(null);
+  if (preloadedImages.has(url)) return Promise.resolve(preloadedImages.get(url));
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.decoding = "async";
+    img.loading = "eager";
+    img.onload = () => resolve(img);
+    img.onerror = () => resolve(null);
+    img.src = url;
+    preloadedImages.set(url, img);
+  });
+}
+function preloadMemoryPhotos() {
+  memories.forEach((m) => {
+    if (m?.photoUrl) void preloadImage(m.photoUrl);
   });
 }
 
@@ -2107,6 +2128,7 @@ async function init() {
   maybeLoadTrainerSprite();
   loadRenderAssets();
   loadMonAssets();
+  preloadMemoryPhotos(); // empieza a cargar nada más entrar
   await loadAvatarLayerAssets();
   loadCuteAssets();
   generateWorld();
