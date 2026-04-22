@@ -842,7 +842,7 @@ function spawnFloatingMons() {
   const specs = [
     { key: "snorlax", thought: "Zzz… ¿ya es hora del regalo?" },
     { key: "sylveon", thought: "¡Modo celebración activado!" },
-    { key: "pikachu", thought: "¡Pika! (no olvides la guantera)" },
+    { key: "pikachu", thought: "¡Pika pika! (modo aventura ON)" },
     { key: "mimikyu", thought: "Shh… te guardo el secreto del botín." },
   ];
   const ys = [62, 46, 30, 16];
